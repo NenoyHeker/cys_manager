@@ -30,6 +30,3 @@ server.listen(port,hostname,()=>{
 });
 
 
-app.listen(port,()=>{
-    console.log('Lunching a faking gatito')
-});
