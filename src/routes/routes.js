@@ -1,18 +1,13 @@
-'use strict'
-
-var express = require('express');
-var Article = require('../controllers/articleC');
-
-//Llamamos el objeto router de express
-
-var router = express.Router();
+const express = require('express');
+const router = express.Router();
+var Equipo = require('../controllers/equipoCO');
 
 //Rutas para los articulos
 
-router.post('/save',Article.save);
+router.post('/saveD',(req, res)=>{
+  res.send("nyah nyaaaah");  
+});
 
-router.get('/articles', Article.getArticles);
 
-router.delete('/delete/:id', Article.delete);
 
 module.exports = router;
