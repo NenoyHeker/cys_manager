@@ -1,17 +1,32 @@
-'use strict'
+const express = require("express");
+const mongoose = require("mongoose");
+require("dotenv").config();
+const Routes = require("./routes/routes");
 
-const bodyParser = require('body-parser');
-const express = require('express');
 const app = express();
-const mongoose = require('mongoose');
+const port = process.env.PORT || 4000;
+
+app.use('/api', Routes)
+
+//routes
+app.get('/',(req,res)=>{
+    res.send('weulcum');
+});
 
 
+//mongodb connection
+mongoose.connect(process.env.URI_MDB)
+.then(()=> console.log("Conectao"))
+.catch((error) => console.error(error));
+
+app.listen(port,() => console.log("server listening on port", port));
+
+
+/*
 const http = require("http");
 const hostname = "127.0.0.1";
-const port = 3000;
 
-
-
+var article_routes = require('./routes/routes');
 
 
 const server = http.createServer((req, res)=>{
@@ -32,8 +47,8 @@ server.listen(port,hostname,()=>{
 });
 
 const dbName = "dbtest01";
-var url =
-
+*/
+/*
 //Carga del body parser, analizador de bodys a travez de la URL
 
 app.use(bodyParser.urlencoded({extended: false}));
@@ -51,3 +66,17 @@ app.use((req,res) => {
     res.header('Allow','GET,POST, OPTIONS, PUT, DELETE');
     next();
 });
+
+
+app.use('/api',article_routes);
+
+
+mongoose.connect(url, {userNewUrlParser: true}).then (()=>{
+    console.log('Conexion a la bd realizada con exito');
+    app.listen(port, ()=>{
+        console.log('Lanzando la aplicacion en el puerto '+ port);
+    });
+})
+
+*/
+

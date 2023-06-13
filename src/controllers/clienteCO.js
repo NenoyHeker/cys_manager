@@ -1,7 +1,5 @@
-'use strin'
-
-const article = require('../models/article');
-var Article = require('../models/article');
+const article = require('../models/equipo');
+var Article = require('../models/equipo');
 
 //Objeto para disponer de los metodos de ruta a definir
 
