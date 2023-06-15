@@ -10,10 +10,9 @@ var EquipoSchema = new Schema({
     problem: String,
     type: String,
     date: {type:Date,default:Date.now},
-    content: String,
-    author:String
+    user:String
 });
 
-module.exports = mongoose.model('Article', EquipoSchema);
+module.exports = mongoose.model('Equipo', EquipoSchema);
 
 

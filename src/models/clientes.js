@@ -1,19 +1,15 @@
 const mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-var EquipoSchema = new Schema({
+var ClienteSchema = new Schema({
 
-    brand : String,
-    serial: String,
-    counter: String,
-    parts: String,
-    problem: String,
-    type: String,
+    id: int,
+    name: String,
+    phone: String,
     date: {type:Date,default:Date.now},
-    content: String,
-    author:String
+
 });
 
-module.exports = mongoose.model('Article', EquipoSchema);
+module.exports = mongoose.model('Cliente', ClienteSchema);
 
 

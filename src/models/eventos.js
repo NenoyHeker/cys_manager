@@ -3,15 +3,16 @@ var Schema = mongoose.Schema;
 
 var EquipoSchema = new Schema({
 
-    brand : String,
+    id: String,
     serial: String,
     counter: String,
     parts: String,
     problem: String,
     type: String,
-    date: {type:Date,default:Date.now},
     content: String,
-    author:String
+    date: {type:Date,default:Date.now},
+    
+    
 });
 
 module.exports = mongoose.model('Article', EquipoSchema);
