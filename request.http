@@ -1,0 +1,40 @@
+###
+POST http://localhost:9000/api/newcliente HTTP/1.1
+Content-Type: application/json
+
+{
+    "name": "Kato",
+    "lastname": "Fato",
+    "phone": "1000000"
+}
+
+###
+POST http://localhost:9000/api/users HTTP/1.1
+Content-Type: application/json
+
+{
+    "name": "kato",
+    "age": "100",
+    "email":"nyah@email.com"
+}
+
+###
+GET http://localhost:9000/api/users HTTP/1.1
+
+
+###
+GET http://localhost:9000/api/getcliente/64b973222d4c7477cd83de68 HTTP/1.1
+
+
+###
+PUT http://localhost:9000/api/users/64b973222d4c7477cd83de68 HTTP/1.1
+Content-Type: application/json
+
+{
+    "name": "Fato kato",
+    "age": "100",
+    "email":"nyah@email.com"
+}
+
+###
+DELETE  http://localhost:9000/api/users/64b973222d4c7477cd83de68 HTTP/1.1

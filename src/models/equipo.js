@@ -1,18 +1,60 @@
 const mongoose = require('mongoose');
-var Schema = mongoose.Schema;
 
-var EquipoSchema = new Schema({
+const equipoSchema = mongoose.Schema({
+    //OEM
+    model:{
+        type: String,
+        required: true
+    },
+    brand:{
+        type: String,
+        required: true
+    },
+    serial:{
+        type: String,
+        required: true
+    },
 
-    brand : String,
-    serial: String,
-    counter: String,
-    parts: String,
-    problem: String,
-    type: String,
-    date: {type:Date,default:Date.now},
-    user:String
+    //CUSTOM
+    cpu:{
+        type: String,
+        required: true
+    },
+    ram:{
+        type: String,
+        required: true
+    },
+    storage:{
+        type: String,
+        required: true
+    },
+
+    //MULTI
+    counter:{
+        type: String,
+        required: true
+    },
+
+    //COMMON
+    owner:{
+        type: String,
+        required: true
+    },
+    problem:{
+        type: String,
+        required: true
+    },
+    date:{
+        type: String,
+        default: Date.now,
+        required: true
+    },
+    user:{
+        type: String,
+        required: true
+    },
 });
 
-module.exports = mongoose.model('Equipo', EquipoSchema);
+module.exports = mongoose.model('Equipo', equipoSchema);
 
 
