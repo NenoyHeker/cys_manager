@@ -23,7 +23,7 @@ GET http://localhost:9000/api/users HTTP/1.1
 
 
 ###
-GET http://localhost:9000/api/getcliente/64b973222d4c7477cd83de68 HTTP/1.1
+GET http://localhost:9000/api/getclientes HTTP/1.1
 
 
 ###
