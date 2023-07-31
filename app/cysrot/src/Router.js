@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Header from "./components/header";
 import New from "./components/New";
-import Articles from './components/Articles';
+import {MostrarClientes} from './components/Articles';
 
 const Router = () => {
     return(
@@ -11,7 +11,7 @@ const Router = () => {
             
             <Routes>
                 <Route exact path='/' element = {<New/>}/>
-                <Route exact path='/articles' element= {<Articles/>}/>
+                <Route exact path='/articles' element= {<MostrarClientes/>}/>
             </Routes>
             
         </BrowserRouter>
