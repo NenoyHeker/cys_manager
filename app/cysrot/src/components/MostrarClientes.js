@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
-import axios, {Axios} from 'axios';
+import axios from 'axios';
 import Global from '../Global';
-import {ClienteIndividual} from "./Article";
+import {ClienteIndividual} from "./ClienteInd";
 
 export const MostrarClientes = () => {
     const [dataClientes, setDataClientes] = useState([]);
@@ -23,10 +23,6 @@ export const MostrarClientes = () => {
         return(
             <div key={id}>
                 <ClienteIndividual cliente = {cliente}/>
-                {cliente.name}
-                {cliente.lastname}
-                {cliente.phone}
-                {cliente.date}
             </div>
         );
     });
@@ -38,7 +34,8 @@ export const MostrarClientes = () => {
                     <div className='col-md'>Apellido</div>
                     <div className='col-md'>Telefono</div>
                     <div className='col-md'>Fecha de registro</div>
-                    <div className='col-md'></div>
+                    <div className='col'></div>
+                    <div className='col'></div>
                 </div>
             </div>
             <div className='container mt-5'>
