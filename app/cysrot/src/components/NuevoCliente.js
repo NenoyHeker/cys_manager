@@ -1,18 +1,20 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import {Navigate} from 'react-router-dom';
+import {useNavigate} from 'react-router-dom';
 import Global from '../Global';
 
 
-const New = () =>{
+export const NuevoCliente = () =>{
 
     const url = Global.url;
+    const navigate = useNavigate();
 
     //para cambiar de estado
     const [clienteReg, setArticle] = useState({
         name: null,
         lastname: null,
         phone: null,
+        date: null,
     })
 
     //state que redirecciona a la pagina de inicio una vez se acaba el registro
@@ -23,12 +25,14 @@ const New = () =>{
     let nameref = React.createRef();
     let lastnameref = React.createRef();
     let phoneref = React.createRef();
+    let dateref = React.createRef();
 
     const changeState = () =>{
         setArticle({
             name: nameref.current.value,
             lastname: lastnameref.current.value,
-            phone: phoneref.current.value
+            phone: phoneref.current.value,
+            date: dateref.current.value
         });
 
         console.log(clienteReg);
@@ -50,17 +54,17 @@ const New = () =>{
     // se evalua si redirect es verdadero para redireccionar al componente articles
     if(redirect){
         //articles esta declarado en Header.js
-        return <Navigate to="articles"/>;
+        return navigate("/mostrarclientes");
     }
 
 
     return(
-        <div className="nueva-publicacion">
+        <div className="nuevo-cliente">
            <div id="formulario" className="card mx-auto mb-3 mt-5" style={{width: '30em'}}>
                 <div className="card-header text-dark">
 
                     <h4>
-                        Nuevo CLiente
+                        Nuevo Cliente
                     </h4>
                 </div>
                 <div className="card-body">
@@ -85,6 +89,12 @@ const New = () =>{
                         </div>
 
                         <div className="mb-3">
+                            <label>Fecha de registro</label>
+                            <input type="date" className="form-control" id="date" name="date" ref ={dateref} onChange={changeState} required></input>
+                            
+                        </div>
+
+                        <div className="mb-3">
                             
                             <input type="submit" className="form-control btn btn-primary" id="publish" value="Publicar" required></input>
                             
@@ -96,5 +106,3 @@ const New = () =>{
         </div>
     );
 }
-
-export default New;
