@@ -8,6 +8,10 @@ export const MostrarClientes = () => {
     const url = Global.url;
 
     useEffect(()=>{
+        searchClientes();
+    },[]);
+
+    function searchClientes(){
         axios.get(url + 'getClientes')
         .then((res) => {
             console.log(res);
@@ -16,8 +20,7 @@ export const MostrarClientes = () => {
         .catch((e)=>{
             console.log(e);
         });
-    },[]);
-
+    }
 
     const listarClientes = dataClientes.map((cliente, id) =>{
         return(
