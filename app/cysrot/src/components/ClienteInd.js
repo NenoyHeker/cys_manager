@@ -3,7 +3,7 @@ import {Link} from "react-router-dom";
 
 export const ClienteIndividual = ({cliente}) => {
     var linkEditar = "/editarcliente/" + cliente._id;
-    var linkBorrar = "/BorrarCliente/" + cliente._id;
+    var linkBorrar = "/eliminarcliente/" + cliente._id;
     
     return(
         <>
