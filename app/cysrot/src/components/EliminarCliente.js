@@ -4,7 +4,7 @@ import axios from 'axios';
 import Global from '../Global';
 
 export const EliminarCliente = () => {
-    url = Global.url;
+    const url = Global.url;
     const params = useParams();
     console.log(params.id);
 
