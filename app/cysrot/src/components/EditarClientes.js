@@ -38,7 +38,6 @@ export const EditarCliente = () => {
     function updCliente(e) {
         e.preventDefault();
         var cliObj = {
-            id: id,
             name: name,
             lastname: lastname,
             phone: phone,
@@ -46,7 +45,7 @@ export const EditarCliente = () => {
         }
         console.log(cliObj);
         
-        axios.put(url + 'updatecliente/', cliObj)
+        axios.put(url + 'updatecliente/' + id, cliObj)
             .then((res) => {
                 navigate("/mostrarclientes");
             })
