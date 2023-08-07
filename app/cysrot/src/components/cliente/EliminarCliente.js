@@ -1,9 +1,9 @@
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import React, { useState, useEffect } from 'react';
-import Modal from "./Modal";
+import Modal from "../Modal";
 import axios from 'axios';
-import Global from '../Global';
+import Global from '../../Global';
 
 
 

@@ -1,16 +1,15 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import {useNavigate} from 'react-router-dom';
-import Global from '../Global';
+import Global from '../../Global';
 
 
-export const NuevoCliente = () =>{
+export const NuevoEquipo = () =>{
 
     const url = Global.url;
     const navigate = useNavigate();
 
-    //para cambiar de estado
-    const [clienteReg, setArticle] = useState({
+    const [equipoReg, setEquipo] = useState({
         name: null,
         lastname: null,
         phone: null,

@@ -2,10 +2,10 @@ import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Header from "./components/header";
 import { Mainmenu } from "./components/mainmenu";
-import { NuevoCliente } from "./components/NuevoCliente";
-import { MostrarClientes } from "./components/MostrarClientes";
-import { EditarCliente } from "./components/EditarClientes";
-import { EliminarCliente } from "./components/EliminarCliente";
+import { NuevoCliente } from "./components/cliente/NuevoCliente";
+import { MostrarClientes } from "./components/cliente/MostrarClientes";
+import { EditarCliente } from "./components/cliente/EditarClientes";
+import { EliminarCliente } from "./components/cliente/EliminarCliente";
 
 const Router = () => {
     return(
