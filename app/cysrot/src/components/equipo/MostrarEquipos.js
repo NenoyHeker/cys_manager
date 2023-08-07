@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
-import Global from '../Global';
-import {ClienteIndividual} from "./ClienteInd";
+import Global from '../../Global';
+import {ClienteIndividual} from "./EquipoInd";
 
 export const MostrarClientes = () => {
     const [dataClientes, setDataClientes] = useState([]);
@@ -21,10 +21,12 @@ export const MostrarClientes = () => {
             console.log(e);
         });
     }
-
+// "<ClienteIndividual cliente = {}>" renderiza el componene ClienteInd y se le manda como parametro cliente 
     const listarClientes = dataClientes.map((cliente, id) =>{
         return(
             <div key={id}>
+
+                
                 <ClienteIndividual cliente = {cliente}/>
             </div>
         );
