@@ -34,9 +34,6 @@ export const NuevoCliente = () =>{
             phone: phoneref.current.value,
             date: dateref.current.value
         });
-
-        console.log(clienteReg);
-
     }
 
     const sendData = (e) =>{
@@ -44,11 +41,11 @@ export const NuevoCliente = () =>{
         e.preventDefault();
         changeState();
         //Peticion HTTP
-        axios.post(url + 'newCliente',clienteReg)
+        axios.post(url + 'newcliente',clienteReg)
         .then(res => {
             //redirect se establece como true en caso de que si se haya guardado el nuevo cliente
             setRedirect(true);
-            console.log(res.data)
+            
         })
     }
     // se evalua si redirect es verdadero para redireccionar al componente articles
@@ -84,7 +81,7 @@ export const NuevoCliente = () =>{
 
                         <div className="mb-3">
                             <label>Numero de telefono</label>
-                            <input type="text" className="form-control" id="phone" name="phone" ref ={phoneref} onChange={changeState} required></input>
+                            <input type="number" className="form-control" id="phone" name="phone" ref ={phoneref} onChange={changeState} required></input>
                             
                         </div>
 

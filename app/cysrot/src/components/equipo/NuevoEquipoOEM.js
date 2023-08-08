@@ -4,16 +4,18 @@ import {useNavigate} from 'react-router-dom';
 import Global from '../../Global';
 
 
-export const NuevoEquipo = () =>{
+export const NuevoEquipoOEM = () =>{
 
     const url = Global.url;
     const navigate = useNavigate();
 
     const [equipoReg, setEquipo] = useState({
-        name: null,
-        lastname: null,
-        phone: null,
-        date: null,
+        modelref: null,
+        brandref: null,
+        serialref: null,
+        ownerref: null,
+        problemref: null,
+        dateref: null,
     })
 
     //state que redirecciona a la pagina de inicio una vez se acaba el registro
@@ -21,20 +23,24 @@ export const NuevoEquipo = () =>{
 
     //Referencia de los datos del formulario
 
-    let nameref = React.createRef();
-    let lastnameref = React.createRef();
-    let phoneref = React.createRef();
+    let modelref = React.createRef();
+    let brandref = React.createRef();
+    let serialref = React.createRef();
+    let ownerref = React.createRef();
+    let problemref = React.createRef();
     let dateref = React.createRef();
 
     const changeState = () =>{
-        setArticle({
-            name: nameref.current.value,
-            lastname: lastnameref.current.value,
-            phone: phoneref.current.value,
+        setEquipo({
+            model: modelref.current.value,
+            brand: brandref.current.value,
+            serial: serialref.current.value,
+            owner: ownerref.current.value,
+            problem: problemref.current.value,
             date: dateref.current.value
         });
 
-        console.log(clienteReg);
+        console.log(equipoReg);
 
     }
 
@@ -43,7 +49,7 @@ export const NuevoEquipo = () =>{
         e.preventDefault();
         changeState();
         //Peticion HTTP
-        axios.post(url + 'newCliente',clienteReg)
+        axios.post(url + 'newoem',equipoReg)
         .then(res => {
             //redirect se establece como true en caso de que si se haya guardado el nuevo cliente
             setRedirect(true);
@@ -58,33 +64,40 @@ export const NuevoEquipo = () =>{
 
 
     return(
-        <div className="nuevo-cliente">
+        <div className="nuevo-oem">
            <div id="formulario" className="card mx-auto mb-3 mt-5" style={{width: '30em'}}>
                 <div className="card-header text-dark">
 
                     <h4>
-                        Nuevo Cliente
+                        Nuevo Equipo OEM
                     </h4>
                 </div>
                 <div className="card-body">
                     
                     <form onSubmit={sendData}>
                         <div className="mb-3">
-                            <label>Nombre</label>
-                            <input type="text" className="form-control" id="name" name="name" ref ={nameref} onChange={changeState} required></input>
-                            
+                            <label>Modelo</label>
+                            <input type="text" className="form-control" id="model" name="model" ref ={modelref} onChange={changeState} required></input>                         
                         </div>
 
                         <div className="mb-3">
-                            <label>Apellidos</label>
-                            <input type="text" className="form-control" id="lastname" name="lastname" ref ={lastnameref} onChange={changeState} required></input>
-                            
+                            <label>Marca</label>
+                            <input type="text" className="form-control" id="brand" name="brand" ref ={brandref} onChange={changeState} required></input>
                         </div>
 
                         <div className="mb-3">
-                            <label>Numero de telefono</label>
-                            <input type="text" className="form-control" id="phone" name="phone" ref ={phoneref} onChange={changeState} required></input>
-                            
+                            <label>Número Serial</label>
+                            <input type="number" className="form-control" id="serial" name="serial" ref ={serialref} onChange={changeState} required></input>
+                        </div>
+                        
+                        <div className="mb-3">
+                            <label>Dueño</label>
+                            <input type="text" className="form-control" id="owner" name="owner" ref ={ownerref} onChange={changeState} required></input>
+                        </div>
+
+                        <div className="mb-3">
+                            <label>Diagnostico inicial</label>
+                            <textarea cols={50} rows={6} className="form-control" id="problem" name="problem" ref ={problemref} onChange={changeState} required></textarea>
                         </div>
 
                         <div className="mb-3">
@@ -95,7 +108,7 @@ export const NuevoEquipo = () =>{
 
                         <div className="mb-3">
                             
-                            <input type="submit" className="form-control btn btn-primary" id="publish" value="Publicar" required></input>
+                            <input type="submit" className="form-control btn btn-primary" id="publish" value="Registrar" required></input>
                             
                         </div>
 

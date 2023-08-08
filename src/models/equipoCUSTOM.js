@@ -1,21 +1,6 @@
 const mongoose = require('mongoose');
 
-const equipoSchema = mongoose.Schema({
-    //OEM
-    model:{
-        type: String,
-        required: true
-    },
-    brand:{
-        type: String,
-        required: true
-    },
-    serial:{
-        type: String,
-        required: true
-    },
-
-    //CUSTOM
+const equipoCUSTOMSchema = mongoose.Schema({
     cpu:{
         type: String,
         required: true
@@ -28,14 +13,6 @@ const equipoSchema = mongoose.Schema({
         type: String,
         required: true
     },
-
-    //MULTI
-    counter:{
-        type: String,
-        required: true
-    },
-
-    //COMMON
     owner:{
         type: String,
         required: true
@@ -55,6 +32,6 @@ const equipoSchema = mongoose.Schema({
     },
 });
 
-module.exports = mongoose.model('Equipo', equipoSchema);
+module.exports = mongoose.model('EquipoCUSTOM', equipoCUSTOMSchema);
 
 

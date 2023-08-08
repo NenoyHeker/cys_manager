@@ -13,7 +13,9 @@ app.use(cors());
 //rutas de modificación
 
 const clienteRoutes = require("./routes/clientes");
-const equipoRoutes = require("./routes/equipos");
+const customRoutes = require("./routes/equiposCUSTOM");
+const multiRoutes = require("./routes/equiposMULTI");
+const oemRoutes = require("./routes/equiposOEM");
 const eventoRoutes = require("./routes/eventos");
 
 // middlewares
@@ -21,7 +23,9 @@ const eventoRoutes = require("./routes/eventos");
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 app.use('/api', clienteRoutes);
-app.use('/api', equipoRoutes);
+app.use('/api', customRoutes);
+app.use('/api', multiRoutes);
+app.use('/api', oemRoutes);
 app.use('/api', eventoRoutes);
 
 
