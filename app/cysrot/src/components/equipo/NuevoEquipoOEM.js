@@ -59,7 +59,7 @@ export const NuevoEquipoOEM = () =>{
     // se evalua si redirect es verdadero para redireccionar al componente articles
     if(redirect){
         //articles esta declarado en Header.js
-        return navigate("/mostrarclientes");
+        return navigate("/mostraroem");
     }
 
 
