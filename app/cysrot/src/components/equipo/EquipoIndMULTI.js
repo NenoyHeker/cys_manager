@@ -2,8 +2,8 @@ import React from "react";
 import {Link} from "react-router-dom";
 
 export const EquipoIndividual = ({equipo}) => {
-    var linkEditar = "/editaroem/" + equipo._id;
-    var linkBorrar = "/eliminaroem/" + equipo._id;
+    var linkEditar = "/editarmulti/" + equipo._id;
+    var linkBorrar = "/eliminarmulti/" + equipo._id;
     
     return(
         <>
@@ -21,6 +21,11 @@ export const EquipoIndividual = ({equipo}) => {
                     <div className="col-md">
                         <div className="label">
                             {equipo.serial} 
+                        </div>
+                    </div>
+                    <div className="col-md">
+                        <div className="label">
+                            {equipo.counter} 
                         </div>
                     </div>
                     <div className="col-md">

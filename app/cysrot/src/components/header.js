@@ -34,6 +34,18 @@ const Header = () => {
                     <li>
                         <NavLink to="MostrarOEM" className="nav-link" > Mostrar Equipos OEM </NavLink>
                     </li>
+                    <li>
+                        <NavLink to="NuevoCustom" className="nav-link" > Nuevo Equipo Custom </NavLink>
+                    </li>
+                    <li>
+                        <NavLink to="MostrarCustom" className="nav-link" > Mostrar Equipos Custom </NavLink>
+                    </li>
+                    <li>
+                        <NavLink to="NuevoMulti" className="nav-link" > Nuevo Equipo Multifuncional </NavLink>
+                    </li>
+                    <li>
+                        <NavLink to="MostrarMulti" className="nav-link" > Mostrar Equipos Multifuncional </NavLink>
+                    </li>
 
                 </ul>
 

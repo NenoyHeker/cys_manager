@@ -4,15 +4,15 @@ import {useNavigate} from 'react-router-dom';
 import Global from '../../Global';
 
 
-export const NuevoEquipoOEM = () =>{
+export const NuevoEquipoCUSTOM = () =>{
 
     const url = Global.url;
     const navigate = useNavigate();
 
     const [equipoReg, setEquipo] = useState({
-        modelref: null,
-        brandref: null,
-        serialref: null,
+        cpu: null,
+        ram: null,
+        storage: null,
         ownerref: null,
         problemref: null,
         dateref: null,
@@ -23,18 +23,18 @@ export const NuevoEquipoOEM = () =>{
 
     //Referencia de los datos del formulario
 
-    let modelref = React.createRef();
-    let brandref = React.createRef();
-    let serialref = React.createRef();
+    let cpuref = React.createRef();
+    let ramref = React.createRef();
+    let storageref = React.createRef();
     let ownerref = React.createRef();
     let problemref = React.createRef();
     let dateref = React.createRef();
 
     const changeState = () =>{
         setEquipo({
-            model: modelref.current.value,
-            brand: brandref.current.value,
-            serial: serialref.current.value,
+            cpu: cpuref.current.value,
+            ram: ramref.current.value,
+            storage: storageref.current.value,
             owner: ownerref.current.value,
             problem: problemref.current.value,
             date: dateref.current.value
@@ -49,7 +49,7 @@ export const NuevoEquipoOEM = () =>{
         e.preventDefault();
         changeState();
         //Peticion HTTP
-        axios.post(url + 'newoem',equipoReg)
+        axios.post(url + 'newcustom',equipoReg)
         .then(res => {
             //redirect se establece como true en caso de que si se haya guardado el nuevo cliente
             setRedirect(true);
@@ -59,35 +59,35 @@ export const NuevoEquipoOEM = () =>{
     // se evalua si redirect es verdadero para redireccionar al componente articles
     if(redirect){
         //articles esta declarado en Header.js
-        return navigate("/mostraroem");
+        return navigate("/mostrarcustom");
     }
 
 
     return(
-        <div className="nuevo-oem">
+        <div className="nuevo-custom">
            <div id="formulario" className="card mx-auto mb-3 mt-5" style={{width: '30em'}}>
                 <div className="card-header text-dark">
 
                     <h4>
-                        Nuevo Equipo OEM
+                        Nuevo Equipo Custom
                     </h4>
                 </div>
                 <div className="card-body">
                     
                     <form onSubmit={sendData}>
                         <div className="mb-3">
-                            <label>Modelo</label>
-                            <input type="text" className="form-control" id="model" name="model" ref ={modelref} onChange={changeState} required></input>                         
+                            <label>Procesador</label>
+                            <input type="text" className="form-control" id="cpu" name="cpu" ref ={cpuref} onChange={changeState} required></input>                         
                         </div>
 
                         <div className="mb-3">
-                            <label>Marca</label>
-                            <input type="text" className="form-control" id="brand" name="brand" ref ={brandref} onChange={changeState} required></input>
+                            <label>Memoria RAM</label>
+                            <input type="text" className="form-control" id="ram" name="ram" ref ={ramref} onChange={changeState} required></input>
                         </div>
 
                         <div className="mb-3">
-                            <label>Número Serial</label>
-                            <input type="text" className="form-control" id="serial" name="serial" ref ={serialref} onChange={changeState} required></input>
+                            <label>Almacenamiento</label>
+                            <input type="text" className="form-control" id="storage" name="storage" ref ={storageref} onChange={changeState} required></input>
                         </div>
                         
                         <div className="mb-3">

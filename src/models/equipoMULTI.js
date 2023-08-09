@@ -29,11 +29,7 @@ const equipoMULTISchema = mongoose.Schema({
         type: String,
         default: Date.now,
         required: true
-    },
-    user:{
-        type: String,
-        required: true
-    },
+    }
 });
 
 module.exports = mongoose.model('EquipoMULTI', equipoMULTISchema);
