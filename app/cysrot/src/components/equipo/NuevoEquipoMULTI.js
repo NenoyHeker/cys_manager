@@ -4,7 +4,7 @@ import {useNavigate} from 'react-router-dom';
 import Global from '../../Global';
 
 
-export const NuevoEquipoOEM = () =>{
+export const NuevoEquipoMULTI = () =>{
 
     const url = Global.url;
     const navigate = useNavigate();
@@ -13,6 +13,7 @@ export const NuevoEquipoOEM = () =>{
         modelref: null,
         brandref: null,
         serialref: null,
+        counterref: null,
         ownerref: null,
         problemref: null,
         dateref: null,
@@ -26,6 +27,7 @@ export const NuevoEquipoOEM = () =>{
     let modelref = React.createRef();
     let brandref = React.createRef();
     let serialref = React.createRef();
+    let counterref = React.createRef();
     let ownerref = React.createRef();
     let problemref = React.createRef();
     let dateref = React.createRef();
@@ -35,9 +37,10 @@ export const NuevoEquipoOEM = () =>{
             model: modelref.current.value,
             brand: brandref.current.value,
             serial: serialref.current.value,
+            counter: counterref.current.value,
             owner: ownerref.current.value,
             problem: problemref.current.value,
-            date: dateref.current.value
+            date: dateref.current.value,
         });
 
         console.log(equipoReg);
@@ -49,7 +52,7 @@ export const NuevoEquipoOEM = () =>{
         e.preventDefault();
         changeState();
         //Peticion HTTP
-        axios.post(url + 'newoem',equipoReg)
+        axios.post(url + 'newmulti',equipoReg)
         .then(res => {
             //redirect se establece como true en caso de que si se haya guardado el nuevo cliente
             setRedirect(true);
@@ -59,17 +62,17 @@ export const NuevoEquipoOEM = () =>{
     // se evalua si redirect es verdadero para redireccionar al componente articles
     if(redirect){
         //articles esta declarado en Header.js
-        return navigate("/mostraroem");
+        return navigate("/mostrarmulti");
     }
 
 
     return(
-        <div className="nuevo-oem">
+        <div className="nuevo-multi">
            <div id="formulario" className="card mx-auto mb-3 mt-5" style={{width: '30em'}}>
                 <div className="card-header text-dark">
 
                     <h4>
-                        Nuevo Equipo OEM
+                        Nuevo Equipo Multifuncional
                     </h4>
                 </div>
                 <div className="card-body">
@@ -90,6 +93,11 @@ export const NuevoEquipoOEM = () =>{
                             <input type="text" className="form-control" id="serial" name="serial" ref ={serialref} onChange={changeState} required></input>
                         </div>
                         
+                        <div className="mb-3">
+                            <label>Contador</label>
+                            <input type="number" className="form-control" id="counter" name="counter" ref ={counterref} onChange={changeState} required></input>
+                        </div>
+
                         <div className="mb-3">
                             <label>Dueño</label>
                             <input type="text" className="form-control" id="owner" name="owner" ref ={ownerref} onChange={changeState} required></input>

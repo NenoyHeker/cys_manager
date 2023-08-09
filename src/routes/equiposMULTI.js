@@ -43,7 +43,7 @@ router.put('/updatemulti/:id', (req, res) =>{
 
 // delete a device
 
-router.delete('/deleteequipo/:id', (req, res) =>{
+router.delete('/deletemulti/:id', (req, res) =>{
     const { id } = req.params;
     equipoSchema
     .deleteOne({_id: id})

@@ -2,25 +2,25 @@ import React from "react";
 import {Link} from "react-router-dom";
 
 export const EquipoIndividual = ({equipo}) => {
-    var linkEditar = "/editaroem/" + equipo._id;
-    var linkBorrar = "/eliminaroem/" + equipo._id;
+    var linkEditar = "/editarcustom/" + equipo._id;
+    var linkBorrar = "/eliminarcustom/" + equipo._id;
     
     return(
         <>
             <div className="row mt-3">
                     <div className="col-md">
                         <div className="label">
-                            {equipo.model}
+                            {equipo.cpu}
                         </div>
                     </div>
                     <div className="col-md">
                         <div className="label">
-                            {equipo.brand}
+                            {equipo.ram}
                         </div>                        
                     </div>
                     <div className="col-md">
                         <div className="label">
-                            {equipo.serial} 
+                            {equipo.storage} 
                         </div>
                     </div>
                     <div className="col-md">

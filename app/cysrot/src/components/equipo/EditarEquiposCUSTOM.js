@@ -4,15 +4,15 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Global from '../../Global';
 
-export const EditarEquipoOEM = () => {
+export const EditarEquipoCUSTOM = () => {
     const url = Global.url;
     const params = useParams();
 
     const id = params.id;
     const navigate = useNavigate();
-    const [model, setModel] = useState('');
-    const [brand, setBrand] = useState('');
-    const [serial, setSerial] = useState('');
+    const [cpu, setCPU] = useState('');
+    const [ram, setRAM] = useState('');
+    const [storage, setStorage] = useState('');
     const [owner, setOwner] = useState('');
     const [problem, setProblem] = useState('');
     const [date, setDate] = useState('');
@@ -24,11 +24,11 @@ export const EditarEquipoOEM = () => {
 
     function searchEquipo(i) {
 
-        axios.get(url + 'getoem/' + i)
+        axios.get(url + 'getcustom/' + i)
             .then((res) => {
-                setModel(res.data.model);
-                setBrand(res.data.brand);
-                setSerial(res.data.serial);
+                setCPU(res.data.cpu);
+                setRAM(res.data.ram);
+                setStorage(res.data.storage);
                 setOwner(res.data.owner);
                 setProblem(res.data.problem);
                 setDate(res.data.date);
@@ -42,18 +42,18 @@ export const EditarEquipoOEM = () => {
     function updEquipo(e) {
         e.preventDefault();
         var eObj = {
-            model: model,
-            brand: brand,
-            serial: serial,
+            cpu: cpu,
+            ram: ram,
+            storage: storage,
             owner: owner,
             problem: problem,
             date: date
         }
         console.log(eObj);
 
-        axios.put(url + 'updateoem/' + id, eObj)
+        axios.put(url + 'updatecustom/' + id, eObj)
             .then((res) => {
-                navigate("/mostraroem");
+                navigate("/mostrarcustom");
             })
             .catch((e) => {
                 console.log('Error: ' + e);
@@ -66,25 +66,25 @@ export const EditarEquipoOEM = () => {
                 <div id="formulario" className="card mx-auto mb-3 mt-5" style={{ width: '30em' }}>
                     <div className="card-header text-dark">
                         <h4>
-                            Editar Equipo OEM
+                            Editar Equipo Custom
                         </h4>
                     </div>
                     <div className="card-body">
 
                         <form onSubmit={updEquipo}>
                             <div className="mb-3">
-                                <label>Modelo</label>
-                                <input type="text" className="form-control" id="model" name="model" value={model}  onChange={(e) => { setModel(e.target.value) }} required/>
+                                <label>Procesador</label>
+                                <input type="text" className="form-control" id="cpu" name="cpu" value={cpu}  onChange={(e) => { setCPU(e.target.value) }} required/>
                             </div>
 
                             <div className="mb-3">
-                                <label>Marca</label>
-                                <input type="text" className="form-control" id="brand" name="brand" value={brand}  onChange={(e) => { setBrand(e.target.value) }} required/>
+                                <label>Memoria RAM</label>
+                                <input type="text" className="form-control" id="ram" name="ram" value={ram}  onChange={(e) => { setRAM(e.target.value) }} required/>
                             </div>
 
                             <div className="mb-3">
-                                <label>Número Serial</label>
-                                <input type="text" className="form-control" id="serial" name="serial" value={serial} onChange={(e) => { setSerial(e.target.value) }} required/>
+                                <label>Almacenamiento</label>
+                                <input type="text" className="form-control" id="storage" name="storage" value={storage} onChange={(e) => { setStorage(e.target.value) }} required/>
                             </div>
 
                             <div className="mb-3">

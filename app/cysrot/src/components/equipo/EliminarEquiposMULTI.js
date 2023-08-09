@@ -7,7 +7,7 @@ import Global from '../../Global';
 
 
 
-export const EliminarEquipoOEM = () => {
+export const EliminarEquipoMULTI = () => {
     const [active, setActive] = useState(true);
     const [isSuccess, setIsSuccess] = useState(true);
     const toggle = () => {
@@ -20,7 +20,7 @@ export const EliminarEquipoOEM = () => {
 
     useEffect(() => {
         axios
-            .delete(url + 'deleteoem/' + id)
+            .delete(url + 'deletemulti/' + id)
             .then((res) => {
                 setIsSuccess(false);
             })
@@ -32,7 +32,7 @@ export const EliminarEquipoOEM = () => {
     return (
         <div>
             {!active ? (
-                navigate("/mostraroem")
+                navigate("/mostrarmulti")
             ) : (
             <Modal active={active} toggle = {toggle}>
                 {isSuccess ? (
