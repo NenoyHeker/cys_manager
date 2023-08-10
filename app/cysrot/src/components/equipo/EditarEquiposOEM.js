@@ -10,6 +10,7 @@ export const EditarEquipoOEM = () => {
 
     const id = params.id;
     const navigate = useNavigate();
+    const [dataClientes, setDataClientes] = useState([]);
     const [model, setModel] = useState('');
     const [brand, setBrand] = useState('');
     const [serial, setSerial] = useState('');
@@ -20,7 +21,18 @@ export const EditarEquipoOEM = () => {
 
     useEffect(() => {
         searchEquipo(id);
+        searchCli();
     }, []);
+
+    const searchCli = () => {
+        axios.get(url + 'getclientes')
+        .then((res)=>{
+            setDataClientes(res.data)
+        })
+        .catch((e) =>{
+            console.log(e);
+        });
+    }
 
     function searchEquipo(i) {
 
@@ -87,9 +99,16 @@ export const EditarEquipoOEM = () => {
                                 <input type="text" className="form-control" id="serial" name="serial" value={serial} onChange={(e) => { setSerial(e.target.value) }} required/>
                             </div>
 
+                         
                             <div className="mb-3">
                                 <label>Dueño</label>
-                                <input type="text" className="form-control" id="owner" name="owner" value={owner} onChange={(e) => { setOwner(e.target.value) }} required/>
+                                <select className='form-control' id="owner" name="owner" value={owner} onChange={(e) => { setOwner(e.target.value) }}>
+                                    {dataClientes.map(cliente => (
+                                        <option key={cliente.id} value={cliente.name}>{cliente.name}</option>
+                                    )
+                                    )}
+
+                                </select>
                             </div>
 
                             <div className="mb-3">
