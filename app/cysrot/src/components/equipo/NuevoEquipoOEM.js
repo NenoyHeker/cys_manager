@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import {useNavigate} from 'react-router-dom';
 import Global from '../../Global';
@@ -9,6 +9,7 @@ export const NuevoEquipoOEM = () =>{
     const url = Global.url;
     const navigate = useNavigate();
 
+    const [dataClientes, setDataClientes] = useState([]);
     const [equipoReg, setEquipo] = useState({
         modelref: null,
         brandref: null,
@@ -20,6 +21,7 @@ export const NuevoEquipoOEM = () =>{
 
     //state que redirecciona a la pagina de inicio una vez se acaba el registro
     const [redirect, setRedirect] = useState(false);
+    const [timechecked, setTimeChecked] = useState(true);
 
     //Referencia de los datos del formulario
 
@@ -30,6 +32,8 @@ export const NuevoEquipoOEM = () =>{
     let problemref = React.createRef();
     let dateref = React.createRef();
 
+    
+
     const changeState = () =>{
         setEquipo({
             model: modelref.current.value,
@@ -39,9 +43,42 @@ export const NuevoEquipoOEM = () =>{
             problem: problemref.current.value,
             date: dateref.current.value
         });
+    }
 
-        console.log(equipoReg);
+    useEffect(()=>{
+        searchCli();
+    }, []);
+       
+    const timenow=() =>{
+        var tn = new Date()
+        var dd = tn.getDate();
+        var mm = tn.getMonth() + 1;
+        if (dd >= 1 && dd < 10){
+            dd = "0" + dd;
+        }
+        if (mm >= 1 && mm < 10){
+            mm = "0" + mm;
+        }
+        var fulldate = tn.getFullYear() + "-" + mm + "-" +  dd;
+        console.log(fulldate);
+        
+        return(fulldate);
+    }
 
+    if(timechecked){
+        timenow();
+        setTimeChecked(false);
+    }
+
+    const searchCli = () => {
+        changeState();
+        axios.get(url + 'getclientes')
+        .then((res)=>{
+            setDataClientes(res.data)
+        })
+        .catch((e) =>{
+            console.log(e);
+        });
     }
 
     const sendData = (e) =>{
@@ -90,9 +127,16 @@ export const NuevoEquipoOEM = () =>{
                             <input type="text" className="form-control" id="serial" name="serial" ref ={serialref} onChange={changeState} required></input>
                         </div>
                         
+                        
                         <div className="mb-3">
                             <label>Dueño</label>
-                            <input type="text" className="form-control" id="owner" name="owner" ref ={ownerref} onChange={changeState} required></input>
+                            <select className='form-control' id="owner" name="owner" ref ={ownerref} onChange={changeState}>
+                                {dataClientes.map(cliente => (
+                                    <option key={cliente.id} value={cliente.name}>{cliente.name}</option>
+                                )
+                                )}
+
+                            </select>
                         </div>
 
                         <div className="mb-3">
@@ -102,7 +146,7 @@ export const NuevoEquipoOEM = () =>{
 
                         <div className="mb-3">
                             <label>Fecha de registro</label>
-                            <input type="date" className="form-control" id="date" name="date" ref ={dateref} onChange={changeState} required></input>
+                            <input type="date" className="form-control" id="date" name="date" ref ={dateref} onChange={changeState} value={timenow()}  required></input>
                             
                         </div>
 
