@@ -4,17 +4,17 @@ import {useNavigate} from 'react-router-dom';
 import Global from '../../Global';
 
 
-export const NuevoCliente = () =>{
+export const NuevoEvento = () =>{
 
     const url = Global.url;
     const navigate = useNavigate();
 
     //para cambiar de estado
-    const [clienteReg, setArticle] = useState({
-        name: null,
-        lastname: null,
-        phone: null,
-        date: null,
+    const [eventoReg, setEvento] = useState({
+        device: null,
+        owner: null,
+        piece: null,
+        content: null
     })
 
     //state que redirecciona a la pagina de inicio una vez se acaba el registro
@@ -22,16 +22,16 @@ export const NuevoCliente = () =>{
 
     //Referencia de los datos del formulario
 
-    let nameref = React.createRef();
-    let lastnameref = React.createRef();
-    let phoneref = React.createRef();
-    let dateref = React.createRef();
+    let deviceref = React.createRef();
+    let ownerref = React.createRef();
+    let pieceref = React.createRef();
+    let contentref = React.createRef();
 
     const changeState = () =>{
-        setArticle({
-            name: nameref.current.value,
-            lastname: lastnameref.current.value,
-            phone: phoneref.current.value,
+        setEvento({
+            device: deviceref.current.value,
+            owner: ownerref.current.value,
+            piece: phoneref.current.value,
             date: dateref.current.value
         });
 

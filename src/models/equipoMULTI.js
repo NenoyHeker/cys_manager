@@ -1,4 +1,7 @@
 const mongoose = require('mongoose');
+const dateobj = new Date();
+const options = {year:'numeric', month: '2-digit', day: '2-digit', minimumIntegerDigits: 2};
+const formatdate = dateobj.toLocaleDateString(options);
 
 const equipoMULTISchema = mongoose.Schema({
     model:{
@@ -27,7 +30,7 @@ const equipoMULTISchema = mongoose.Schema({
     },
     date:{
         type: String,
-        default: Date.now,
+        default: formatdate,
         required: true
     }
 });

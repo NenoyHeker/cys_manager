@@ -22,9 +22,11 @@ import { NuevoEquipoMULTI } from "./components/equipo/NuevoEquipoMULTI";
 import { MostrarEquiposMULTI } from "./components/equipo/MostrarEquiposMULTI";
 import { EditarEquipoMULTI } from "./components/equipo/EditarEquiposMULTI";
 import { EliminarEquipoMULTI } from "./components/equipo/EliminarEquiposMULTI";
-
-
 //EVENTOS
+import { NuevoEvento } from "./components/evento/NuevoEvento";
+import { MostrarEventos } from "./components/evento/MostrarEventos";
+import { EditarEvento } from "./components/evento/EditarEventos";
+import { EliminarEvento } from "./components/evento/EliminarEvento";
 
 const Router = () => {
     return(
@@ -53,6 +55,11 @@ const Router = () => {
                 <Route exact path='/mostrarmulti' element = {<MostrarEquiposMULTI/>}/>
                 <Route exact path='/editarmulti/:id' element = {<EditarEquipoMULTI/>}/>
                 <Route exact path='/eliminarmulti/:id' element = {<EliminarEquipoMULTI/>}/>
+
+                <Route exact path='/nuevoevento' element = {<NuevoEvento/>}/>
+                <Route exact path='/mostrareventos' element = {<MostrarEventos/>}/>
+                <Route exact path='/editarevento/:id' element = {<EditarEvento/>}/>
+                <Route exact path='/eliminarevento/:id' element = {<EliminarEvento/>}/>
             </Routes>
             
             

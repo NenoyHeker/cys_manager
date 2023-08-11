@@ -13,7 +13,7 @@ export const EditarCliente = () => {
     const [name, setName] = useState('');
     const [lastname, setLastname] = useState('');
     const [phone, setPhone] = useState('');
-    const [date, setDate] = useState('');
+    
     
 
     useEffect(()=>{
@@ -27,7 +27,7 @@ export const EditarCliente = () => {
             setName(res.data.name);
             setLastname(res.data.lastname);
             setPhone(res.data.phone);
-            setDate(res.data.date);
+            
         })
         .catch((e)=>{
             console.log('Error: ' + e);
@@ -41,7 +41,7 @@ export const EditarCliente = () => {
             name: name,
             lastname: lastname,
             phone: phone,
-            date: date
+            
         }
         console.log(cliObj);
         
@@ -82,12 +82,6 @@ export const EditarCliente = () => {
                             <div className="mb-3">
                                 <label>Numero de telefono</label>
                                 <input type="text" className="form-control" id="phone" name="phone" value={phone} onChange={(e) => { setPhone(e.target.value) }} required/>
-
-                            </div>
-
-                            <div className="mb-3">
-                                <label>Fecha de registro</label>
-                                <input type="date" className="form-control" id="date" name="date" value={date} onChange={(e) => { setDate(e.target.value) }} required/>
 
                             </div>
 

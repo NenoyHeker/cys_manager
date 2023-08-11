@@ -15,7 +15,6 @@ export const NuevoEquipoCUSTOM = () =>{
         storage: null,
         ownerref: null,
         problemref: null,
-        dateref: null,
     })
 
     //state que redirecciona a la pagina de inicio una vez se acaba el registro
@@ -28,7 +27,6 @@ export const NuevoEquipoCUSTOM = () =>{
     let storageref = React.createRef();
     let ownerref = React.createRef();
     let problemref = React.createRef();
-    let dateref = React.createRef();
 
     const changeState = () =>{
         setEquipo({
@@ -37,10 +35,7 @@ export const NuevoEquipoCUSTOM = () =>{
             storage: storageref.current.value,
             owner: ownerref.current.value,
             problem: problemref.current.value,
-            date: dateref.current.value
         });
-
-        console.log(equipoReg);
 
     }
 
@@ -98,12 +93,6 @@ export const NuevoEquipoCUSTOM = () =>{
                         <div className="mb-3">
                             <label>Diagnostico inicial</label>
                             <textarea cols={50} rows={6} className="form-control" id="problem" name="problem" ref ={problemref} onChange={changeState} required></textarea>
-                        </div>
-
-                        <div className="mb-3">
-                            <label>Fecha de registro</label>
-                            <input type="date" className="form-control" id="date" name="date" ref ={dateref} onChange={changeState} required></input>
-                            
                         </div>
 
                         <div className="mb-3">

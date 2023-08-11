@@ -1,12 +1,11 @@
 const mongoose = require('mongoose');
-var Schema = mongoose.Schema;
+const dateobj = new Date();
+const options = {year:'numeric', month: '2-digit', day: '2-digit', minimumIntegerDigits: 2};
+const formatdate = dateobj.toLocaleDateString(options);
 
-var EquipoSchema = new Schema({
+const EventoSchema = mongoose.Schema({
 
-    eventNum: {
-        type: String,
-        required: true
-    },
+
     device: {
         type:String,
         required: true
@@ -25,14 +24,11 @@ var EquipoSchema = new Schema({
     },
     date:{
         type:Date,
-        default:Date.now
-    },
-    user: {
-        type:String,
-        required: true
+        default:formatdate,
+        require: true
     }
 });
 
-module.exports = mongoose.model('Article', EquipoSchema);
+module.exports = mongoose.model('Evento', EventoSchema);
 
 
