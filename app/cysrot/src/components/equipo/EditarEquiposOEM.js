@@ -16,8 +16,6 @@ export const EditarEquipoOEM = () => {
     const [serial, setSerial] = useState('');
     const [owner, setOwner] = useState('');
     const [problem, setProblem] = useState('');
-    const [date, setDate] = useState('');
-
 
     useEffect(() => {
         searchEquipo(id);
@@ -43,7 +41,6 @@ export const EditarEquipoOEM = () => {
                 setSerial(res.data.serial);
                 setOwner(res.data.owner);
                 setProblem(res.data.problem);
-                setDate(res.data.date);
             })
             .catch((e) => {
                 console.log('Error: ' + e);
@@ -59,7 +56,6 @@ export const EditarEquipoOEM = () => {
             serial: serial,
             owner: owner,
             problem: problem,
-            date: date
         }
         console.log(eObj);
 
@@ -114,11 +110,6 @@ export const EditarEquipoOEM = () => {
                             <div className="mb-3">
                                 <label>Diagnostico inicial</label>
                                 <textarea cols={50} rows={6} className="form-control" id="problem" name="problem" value={problem} onChange={(e) => { setProblem(e.target.value) }} required/>
-                            </div>
-
-                            <div className="mb-3">
-                                <label>Fecha de registro</label>
-                                <input type="date" className="form-control" id="date" name="date" value={date} onChange={(e) => { setDate(e.target.value) }} required />
                             </div>
 
                             <div className="mb-3">

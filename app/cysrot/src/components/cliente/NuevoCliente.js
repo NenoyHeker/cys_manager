@@ -14,7 +14,7 @@ export const NuevoCliente = () =>{
         name: null,
         lastname: null,
         phone: null,
-        date: null,
+        
     })
 
     //state que redirecciona a la pagina de inicio una vez se acaba el registro
@@ -25,14 +25,13 @@ export const NuevoCliente = () =>{
     let nameref = React.createRef();
     let lastnameref = React.createRef();
     let phoneref = React.createRef();
-    let dateref = React.createRef();
+    
 
     const changeState = () =>{
         setCliente({
             name: nameref.current.value,
             lastname: lastnameref.current.value,
-            phone: phoneref.current.value,
-            date: dateref.current.value
+            phone: phoneref.current.value
         });
     }
 
@@ -85,11 +84,6 @@ export const NuevoCliente = () =>{
                             
                         </div>
 
-                        <div className="mb-3">
-                            <label>Fecha de registro</label>
-                            <input type="date" className="form-control" id="date" name="date" ref ={dateref} onChange={changeState} required></input>
-                            
-                        </div>
 
                         <div className="mb-3">
                             

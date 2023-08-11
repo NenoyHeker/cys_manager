@@ -15,8 +15,7 @@ export const NuevoEquipoOEM = () =>{
         brandref: null,
         serialref: null,
         ownerref: null,
-        problemref: null,
-        dateref: null,
+        problemref: null
     })
 
     //state que redirecciona a la pagina de inicio una vez se acaba el registro
@@ -30,9 +29,6 @@ export const NuevoEquipoOEM = () =>{
     let serialref = React.createRef();
     let ownerref = React.createRef();
     let problemref = React.createRef();
-    let dateref = React.createRef();
-
-    
 
     const changeState = () =>{
         setEquipo({
@@ -41,7 +37,6 @@ export const NuevoEquipoOEM = () =>{
             serial: serialref.current.value,
             owner: ownerref.current.value,
             problem: problemref.current.value,
-            date: dateref.current.value
         });
     }
 
@@ -49,29 +44,7 @@ export const NuevoEquipoOEM = () =>{
         searchCli();
     }, []);
        
-    const timenow=() =>{
-        var tn = new Date()
-        var dd = tn.getDate();
-        var mm = tn.getMonth() + 1;
-        if (dd >= 1 && dd < 10){
-            dd = "0" + dd;
-        }
-        if (mm >= 1 && mm < 10){
-            mm = "0" + mm;
-        }
-        var fulldate = tn.getFullYear() + "-" + mm + "-" +  dd;
-        console.log(fulldate);
-        
-        return(fulldate);
-    }
-
-    if(timechecked){
-        timenow();
-        setTimeChecked(false);
-    }
-
     const searchCli = () => {
-        changeState();
         axios.get(url + 'getclientes')
         .then((res)=>{
             setDataClientes(res.data)
@@ -145,17 +118,11 @@ export const NuevoEquipoOEM = () =>{
                         </div>
 
                         <div className="mb-3">
-                            <label>Fecha de registro</label>
-                            <input type="date" className="form-control" id="date" name="date" ref ={dateref} onChange={changeState} value={timenow()}  required></input>
-                            
-                        </div>
-
-                        <div className="mb-3">
                             
                             <input type="submit" className="form-control btn btn-primary" id="publish" value="Registrar" required></input>
                             
                         </div>
-
+                        
                     </form>
                 </div>
            </div>
